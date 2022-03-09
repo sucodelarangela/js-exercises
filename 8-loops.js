@@ -7,29 +7,36 @@ const cityList = new Array(
 )
 console.log(cityList)
 
-const buyerAge = 18
+const buyerAge = 17
 const isWithSomeoneOfAge = true
 let hasBoughtATicket = false
-const destiny = 'Salvador'
+const destiny = 'Rio de Janeiro'
 const canBuy = buyerAge >= 18 || isWithSomeoneOfAge == true
 
 let counter = 0
-while (counter < 4) {
+let destinyExists = false
+
+/* while (counter < 4) {
   if (cityList[counter] == destiny) {
-    console.log(cityList[counter])
-  } else {
-    console.log('Destiny is not available')
+    console.log('Destiny found.')
+    destinyExists = true
+    break
   }
   counter += 1
+} */
+
+for (let i = 0; i < 4; i++) {
+  if (cityList[i] == destiny) {
+    console.log('Destiny found.')
+    destinyExists = true
+  }
 }
 
-console.log('Boarding: \n\n')
-if (buyerAge >= 18 || isWithSomeoneOfAge) {
+if (canBuy && destinyExists) {
   cityList.splice(2, 1)
-  hasBoughtATicket = true
+  console.log('Have a nice trip!')
 } else {
-  console.log('Buyer is under age and cannot buy a ticket')
-  hasBoughtATicket = false
+  console.log('Sorry, something went wrong...')
 }
-console.log('Possible destinies:')
+console.log('Available destinies:')
 console.log(cityList)
