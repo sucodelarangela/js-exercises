@@ -17,10 +17,19 @@ account1.client = client1
 account1.deposit(500)
 console.log(account1)
 
+// This is another way of creating a new client, but it's not a good practice. It's better to create a new client with private fields
 const account2 = new CheckingAccount()
 account2.client = client2
 account2.agency = 102
 account1.transfer(200, account2)
+
+/*
+account2.client = new Client()
+account2.client.name = 'Tereza'
+account2.client.cpf = 99988877766
+account2.agency = 102
+account1.transfer(200, account2)
+*/
 console.log(account2)
 console.log(account1)
 
