@@ -1,8 +1,17 @@
 import {Client} from './Client.js'
 
 export class CheckingAccount {
+  static numberOfAccounts = 0
+  // We use static when declaring a parameter that is common to all instances of the class, and not particular of each one. In our case, every time a new instance of CheckingAccount is created, this variable will be incremented, because it is not particular of one CheckingAccount but of all of them.
   agency
   _client
+  _balance = 0
+
+  constructor(client, agency) {
+    this.agency = agency
+    this._client = client
+    CheckingAccount.numberOfAccounts += 1
+  }
 
   // By using set, we can validate that the new client must only be a class Client object. This way, we cannot set any value for a client on index.js, only instances of Client. It works as a protection
   set client(newValue) {
@@ -15,8 +24,6 @@ export class CheckingAccount {
   get client() {
     return this._client
   }
-
-  _balance = 0
 
   // In this case, if we use only a getter and we try to change the balance through index.js, the console will warn us that is not possible to change the value of a class that only has getter and no setter
   get balance() {

@@ -17,7 +17,7 @@ class Client {
 class CheckingAccount {
   agency
   // #balance = 0 Proposal for private fields available in https://github.com/tc39/proposal-class-fields#private-fields (still not implemented)
-  // It's a good practice to declare a private field using '_', even though it'll not bee really private. But if you find a field like this, you should understand it must not be altered in any circunstances outside the class context
+  // It's a good practice to declare a private field using '_', even though it'll not be really private. But if you find a field like this, you should understand it must not be altered in any circunstances outside the class context
   _balance = 0
 
   withdraw(value) {
@@ -64,7 +64,7 @@ console.log(checkingAccountAngela.balance)
 // We can (and must) declare these deposit and withdrawal functions inside the scope of the class so we can avoid repetition of them for each client
 
 // Step2.4 - Execute withdrawal:
-// Step3 - To return the value of the withdrawal to the client, we must save tits value inside a variable and, then, we must use a return inside the class method. If we don't use the return, the console log below will return 'undefined'
+// Step3 - To return the value of the withdrawal to the client, we must save its value inside a variable and, then, we must use a return inside the class method. If we don't use the return, the console log below will return 'undefined'
 const withdrawal = checkingAccountAngela.withdraw(50)
 console.log(withdrawal)
 console.log(checkingAccountAngela)
