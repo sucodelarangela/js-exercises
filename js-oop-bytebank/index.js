@@ -1,42 +1,6 @@
-// Step1 - Declaring our first client.
-/*
-
-const client1Name = 'Angela'
-const client1CPF = 11122233399
-const client1Agency = 1001
-const client1Balance = 0
-
-*/
-// Step1.1 - Declaring a client like this requires a lot of code repetition, which is not recommended. To avoid this, we can use CLASSES to interact with these objects and create as many clients as we want from a single piece of code. CLASSES can have attributes (properties/variables) and methods (or functions)
-class Client {
-  name
-  cpf
-}
-
-// Step 2 - Create a checking account class. Then we'll get agency and balance and put them inside this new class
-class CheckingAccount {
-  agency
-  // #balance = 0 Proposal for private fields available in https://github.com/tc39/proposal-class-fields#private-fields (still not implemented)
-  // It's a good practice to declare a private field using '_', even though it'll not bee really private. But if you find a field like this, you should understand it must not be altered in any circunstances outside the class context
-  _balance = 0
-
-  withdraw(value) {
-    if (this._balance >= value) {
-      this._balance -= value
-      // Step3.1 - Return the value so we can show them in the console log after the withdrawal
-      // The return must always come in the end of the block because it acts like a break, avoiding the rest of the function to run
-      return value
-    }
-  }
-
-  deposit(value) {
-    // Step3.2 - A better way to make validations is to declare everything you DON'T want to happen and IF everything passes, then we make the deposit. In this case, IF the VALUE is LESS THAN 0, we don't want to return anything, we will break that function at that point and after that validation, we can authorize the deposit. This method is called EARLY RETURN. Also, if the code block in one line only, it's not necessary to use {}, we can write the code this way:
-    if (value < 0) return
-    this._balance += value
-  }
-}
-
-// Step1.2 - Create a new client (we call it "new instance")
+// After saving each class in an unique file, we'll have inside index.js only the executions. And to make it work, we must create modules and import them inside this file
+import {Client} from './Client.js'
+import {CheckingAccount} from './CheckingAccount.js'
 
 const client1 = new Client()
 client1.name = 'Angela'
@@ -46,25 +10,18 @@ const client2 = new Client()
 client2.name = 'Tereza'
 client2.cpf = 99988877766
 
-// Step 2.1 - Create a new checking account
-const checkingAccountAngela = new CheckingAccount()
-checkingAccountAngela._balance = 0
-checkingAccountAngela.agency = 1001
-// Step 2.2 - Simulate a deposit
-checkingAccountAngela.deposit(100)
-checkingAccountAngela.deposit(200)
-// Step 2.3 - Simulate a withdrawal
-/*
-let withdrawalValue = 200
-if (checkingAccountAngela.balance >= withdrawalValue) {
-  checkingAccountAngela.balance -= withdrawalValue
-}
-console.log(checkingAccountAngela.balance)
-*/
-// We can (and must) declare these deposit and withdrawal functions inside the scope of the class so we can avoid repetition of them for each client
+const account1 = new CheckingAccount()
+account1._balance = 0
+account1.agency = 1001
+account1.client = client1
+account1.deposit(500)
+console.log(account1)
 
-// Step2.4 - Execute withdrawal:
-// Step3 - To return the value of the withdrawal to the client, we must save tits value inside a variable and, then, we must use a return inside the class method. If we don't use the return, the console log below will return 'undefined'
-const withdrawal = checkingAccountAngela.withdraw(50)
-console.log(withdrawal)
-console.log(checkingAccountAngela)
+const account2 = new CheckingAccount()
+account2.client = client2
+account2.agency = 102
+account1.transfer(200, account2)
+console.log(account2)
+console.log(account1)
+
+// Since we're not linking our script to any HTML files, we must config our Node.js to understand index.js is a module. To run modules using NodeJs, we must initialize it with the command 'npm init' and then add the setup inside the 'package.json' file
