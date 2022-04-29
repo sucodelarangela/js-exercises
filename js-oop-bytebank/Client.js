@@ -1,6 +1,7 @@
 export class Client {
-  name
-  _cpf
+  // name
+  // _cpf
+  // Those properties are unnecessarily declared outside the constructor so we can delete them from here (as they are initialized inside the constructor)
 
   get cpf() {
     return this._cpf

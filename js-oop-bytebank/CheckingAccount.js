@@ -3,13 +3,15 @@ import {Client} from './Client.js'
 export class CheckingAccount {
   static numberOfAccounts = 0
   // We use static when declaring a parameter that is common to all instances of the class, and not particular of each one. In our case, every time a new instance of CheckingAccount is created, this variable will be incremented, because it is not particular of one CheckingAccount but of all of them.
-  agency
-  _client
-  _balance = 0
+  // agency
+  // _client
+  // _balance = 0
+  // properties above will be initiallized in the constructor
 
   constructor(client, agency) {
     this.agency = agency
     this._client = client
+    this._balance = 0
     CheckingAccount.numberOfAccounts += 1
   }
 
