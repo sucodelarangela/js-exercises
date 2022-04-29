@@ -2,6 +2,7 @@
 import {Client} from './Client.js'
 import {CheckingAccount} from './CheckingAccount.js'
 import {SavingsAccount} from './SavingsAccount.js'
+import {Account} from './Account.js'
 
 const client1 = new Client('Angela', 11122233399)
 // client1.name = 'Angela'
