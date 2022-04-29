@@ -2,7 +2,6 @@
 import {Client} from './Client.js'
 import {CheckingAccount} from './CheckingAccount.js'
 import {SavingsAccount} from './SavingsAccount.js'
-import {Account} from './Account.js'
 
 const client1 = new Client('Angela', 11122233399)
 // client1.name = 'Angela'
@@ -13,6 +12,7 @@ account1.deposit(500)
 account1.withdraw(100)
 
 const savingsAccount1 = new SavingsAccount(50, client1, 1001)
+savingsAccount1.withdraw(10)
 
 console.log(account1)
 console.log(savingsAccount1)

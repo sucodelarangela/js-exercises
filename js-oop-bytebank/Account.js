@@ -20,10 +20,18 @@ export class Account {
   }
 
   withdraw(value) {
-    if (this._balance >= value) {
-      this._balance -= value
-      return value
+    let tax = 1
+    return this._withdraw(value, tax)
+  }
+
+  _withdraw(value, tax) {
+    const withdrawal = tax * value
+    if (this._balance >= withdrawal) {
+      this._balance -= withdrawal
+      return withdrawal
     }
+
+    return 0 // if the balance is under the withdrawal value, returns 0
   }
 
   deposit(value) {
