@@ -4,12 +4,17 @@ export class Client {
   // Those properties are unnecessarily declared outside the constructor so we can delete them from here (as they are initialized inside the constructor)
 
   get cpf() {
-    return this._cpf
+    return this._cpf;
   }
 
-  constructor(name, cpf) {
-    this.name = name
-    this._cpf = cpf
+  constructor(name, cpf, password) {
+    this.name = name;
+    this._cpf = cpf;
+    this._password = password;
+  }
+
+  authenticate() {
+    return true;
   }
 }
 
