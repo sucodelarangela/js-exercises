@@ -27,9 +27,10 @@ export class Account {
     return this._balance;
   }
 
+  // Abstract method
   withdraw(value) {
-    let tax = 1;
-    return this._withdraw(value, tax);
+    // since the withdraw() method is planned to be extended and overwritten in each type of class (because every type of account has different tax values, in our case), we create the method with an empty block of code. This is called "abstract method"
+    throw new Error('O método Sacar da conta é abstrato.');
   }
 
   _withdraw(value, tax) {
