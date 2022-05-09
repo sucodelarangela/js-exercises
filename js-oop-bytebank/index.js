@@ -1,8 +1,8 @@
 // After saving each class in an unique file, we'll have inside index.js only the executions. And to make it work, we must create modules and import them inside this file
 import {Client} from './Client.js';
-import {CheckingAccount} from './CheckingAccount.js';
-import {SavingsAccount} from './SavingsAccount.js';
-import {SalaryAccount} from './SalaryAccount.js';
+import {CheckingAccount} from './Accounts/CheckingAccount.js';
+import {SavingsAccount} from './Accounts/SavingsAccount.js';
+import {SalaryAccount} from './Accounts/SalaryAccount.js';
 
 const client1 = new Client('Angela', 11122233399);
 // client1.name = 'Angela'
