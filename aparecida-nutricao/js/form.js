@@ -33,6 +33,26 @@ function montaTr(paciente) {
   return pacienteTr;
 }
 
+function validaPaciente(paciente) {
+  const erros = [];
+
+  if (!validaPeso(paciente.peso)) erros.push('Peso inválido.');
+
+  if (!validaAltura(paciente.altura)) erros.push('Altura inválida.');
+
+  return erros;
+}
+
+function exibeMsgsErro(erros) {
+  const ul = document.querySelector('#mensagem-erro');
+
+  erros.forEach(erro => {
+    let li = document.createElement('li');
+    li.textContent = erro;
+    ul.appendChild(li);
+  });
+}
+
 botaoAdicionar.addEventListener('click', e => {
   // Prevenindo o comportamento padrão
   e.preventDefault();
@@ -43,6 +63,13 @@ botaoAdicionar.addEventListener('click', e => {
 
   // Criando a tr e as tds do paciente
   let pacienteTr = montaTr(paciente);
+
+  let erros = validaPaciente(paciente);
+
+  if (erros.length > 0) {
+    exibeMsgsErro(erros);
+    return;
+  }
 
   const tabela = document.querySelector('#tabela-pacientes');
   tabela.appendChild(pacienteTr);
